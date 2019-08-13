@@ -1,2 +1,69 @@
-﻿body {
+body {
+}
+
+.slideshow {  
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 980px;
+  position: relative;
+}
+
+.slides {
+  display: none;
+}
+
+.display-none {
+  display: none;
+}
+
+.display-block {
+  display: block;
+}
+
+.left, .right, .badge {
+  cursor: pointer
+}
+
+.badge {
+  height: 13px;
+  width: 13px;
+  padding: 0
+}
+
+.center {
+  text-align: center !important;
+}
+.text-white {
+  color: #ffffff !important;
+}
+.display-bottommiddle {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%,0%);
+  -ms-transform: translate(-50%,0%);
+}
+.left {
+  float: left !important;
+}
+
+.right {
+  float: right !important;
+}
+
+.hover-highlight:hover {
+  color: #b4aa50 !important;
+}
+
+.w-border {
+  border: 1px solid #ccc !important;
+}
+
+.w-transparent {
+  background-color: transparent !important;
+}
+
+.w-hover-white:hover {
+  color: #000 !important;
+  background-color: #fff !important;
 }
