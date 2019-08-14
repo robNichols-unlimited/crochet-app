@@ -4,7 +4,15 @@ body {
 }
 
 .mySlides {
-  display: none
+  /*display: none;*/
+}
+
+.slide-show {
+  display: block;
+}
+
+.slide-hide {
+  display: none;
 }
 
 img {
@@ -105,4 +113,12 @@ img {
   .prev, .next, .text {
     font-size: 11px
   }
+}
+
+.crochet1 {
+  background-image: url('crochet1.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 100%;
+  height: 600px;
 }
