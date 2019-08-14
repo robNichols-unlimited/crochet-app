@@ -1,39 +1,52 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'crochet-app',
   templateUrl: './crochet-app.component.html',
   styleUrls: ['./crochet-app.component.css']
 })
-export class CrochetAppComponent {
-  public slideIndex = 1;
-  showDivs(slideIndex);
+export class CrochetAppComponent implements AfterViewInit {
+  slideIndex: number;
 
-  public showDivs(n: number) {
+  constructor() {
+    this.slideIndex = 1;
+  }
+
+  ngAfterViewInit() {
+    this.showSlides(this.slideIndex);
+  }
+
+  showSlides(index: number) {
     let i;
-    let x = document.getElementsByClassName("slide");
-    let dots = document.getElementsByClassName("demo");
+    
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
 
-    if (n > x.length) () => this.slideIndex = 1;
-    if (n < 1) () => this.slideIndex = x.length;
-
-    for (i = 0; i < x.length; i++) {
-      x[i].className = "display-none";
+    if (index > slides.length) {
+      this.slideIndex = 1;
     }
 
-    for (i = 0; i < x.length; i++) {
-      dots[i].className = dots[i].className.replace("w-white", "");
+    if (index < 1) {
+      this.slideIndex = slides.length;
     }
 
-    x[this.slideIndex - 1].className += " display-block";
-    dots[this.slideIndex - 1].className += " w-white";
+    for (i = 0; i < slides.length; i++) {
+      //slides[i].style.display = "none";
+      console.log(slides[i]);
+    }
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace(" active", "");
+    }
+    //slides[this.slideIndex - 1].style.display = "block";
+    console.log(this.slideIndex - 1);
+    dots[this.slideIndex - 1].className += " active";
   }
 
-  public plusDivs(n: number) {
-    this.showDivs(this.slideIndex += n);
+  plusSlides(num: number) {
+    this.showSlides(this.slideIndex += num);
   }
 
-  public currentDiv(n: number) {
-    this.showDivs(this.slideIndex = n);
-  }  
+  currentSlide(num: number) {
+    this.showSlides(this.slideIndex = num);
+  }
 }
