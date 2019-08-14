@@ -2,15 +2,16 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'crochet-app',
-  templateUrl: './crochet-app.component.html'
+  templateUrl: './crochet-app.component.html',
+  styleUrls: ['./crochet-app.component.css']
 })
 export class CrochetAppComponent {
   public slideIndex = 1;
   showDivs(slideIndex);
 
-  showDivs(n: number) {
+  public showDivs(n: number) {
     let i;
-    let x = document.getElementsByClassName("slides");
+    let x = document.getElementsByClassName("slide");
     let dots = document.getElementsByClassName("demo");
 
     if (n > x.length) () => this.slideIndex = 1;
@@ -21,18 +22,18 @@ export class CrochetAppComponent {
     }
 
     for (i = 0; i < x.length; i++) {
-      dots[i].className = dots[i].className.replace("w3-white", "");
+      dots[i].className = dots[i].className.replace("w-white", "");
     }
 
-    x[this.slideIndex - 1].className = "display-block";
-    dots[this.slideIndex - 1].className += " w3-white";
+    x[this.slideIndex - 1].className += " display-block";
+    dots[this.slideIndex - 1].className += " w-white";
   }
 
-  plusDivs(n: number) {
+  public plusDivs(n: number) {
     this.showDivs(this.slideIndex += n);
   }
 
-  currentDiv(n: number) {
+  public currentDiv(n: number) {
     this.showDivs(this.slideIndex = n);
   }  
 }

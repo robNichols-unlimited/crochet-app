@@ -8,7 +8,7 @@ body {
   position: relative;
 }
 
-.slides {
+.slide {
   display: none;
 }
 
@@ -33,8 +33,8 @@ body {
 .center {
   text-align: center !important;
 }
-.text-white {
-  color: #ffffff !important;
+.text-blue {
+  color: #0000FF !important;
 }
 .display-bottommiddle {
   position: absolute;
@@ -61,6 +61,10 @@ body {
 
 .w-transparent {
   background-color: transparent !important;
+}
+
+.w-white {
+  color: white;
 }
 
 .w-hover-white:hover {
