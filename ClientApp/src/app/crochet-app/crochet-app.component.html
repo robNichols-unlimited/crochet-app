@@ -1,29 +1,38 @@
 <div>
-  <div class="slideshow">    
-    <img class="slide" src="../../assets/images/crochet1.jpg" style="width: 100%" />
-    <img class="slide" src="../../assets/images/crochet2.jpg" style="width: 100%" />
-    <img class="slide" src="../../assets/images/crochet3.jpg" style="width: 100%" />
-    <div class="center section text-blue display-bottommiddle" style="width: 100%">
-      <div class="left hover-highlight" (click)="plusDivs(-1)">&#10094;</div>
-      <div class="right hover-highlight" (click)="plusDivs(1)">&#10095;</div>
-      <span class="badge demo w-border w-transparent w-hover-white" (click)="currentDiv(1)"></span>
-      <span class="badge demo w-border w-transparent w-hover-white" (click)="currentDiv(2)"></span>
-      <span class="badge demo w-border w-transparent w-hover-white" (click)="currentDiv(3)"></span>
+  <div class="slideshow-container">
+    <div class="mySlides">      
+      <div class="crochet1">
+        <div class="text">Step 1: Select the type & size</div>
+      </div>      
     </div>
+    <div class="mySlides">      
+      <div class="crochet2">
+        <div class="text">Step 2: Select the yarn weight</div>
+      </div>
+    </div>
+    <div class="mySlides">      
+      <div class="crochet3">
+        <div class="text">Step 3: Click the 'Generate' button!</div>
+      </div>
+    </div>
+    <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+    <a class="next" (click)="plusSlides(1)">&#10095;</a>
+  </div>
+  <br/>
+  <div style="text-align: center">
+    <span class="dot" (click)="currentSlide(1)"></span> 
+    <span class="dot" (click)="currentSlide(2)"></span> 
+    <span class="dot" (click)="currentSlide(3)"></span>
   </div>
   <div>
     <label>Select Crochet Type</label>
     <select>
-      <option>Hat</option>
-      <option>Scarf</option>
-      <option>Mittens</option>
-      <option>Sweater</option>
-      <option>Blanket</option>
+      <!--<option *ngFor="let type of projectTypes">{{type}}</option>-->
     </select>
   </div>
   <div>
     <label>Select a Size</label>
-    <select>
+    <select [formControl]="size">
       <option>Baby</option>
       <option>Extra Small</option>
       <option>Small</option>
