@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
+import { CrochetCriteria, YarnWeightEnum } from '../model/crochet-criteria';
 
 @Component({
   selector: 'crochet-app',
@@ -7,15 +9,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CrochetAppComponent implements OnInit {
   slideIndex: number;
+  criteria: CrochetCriteria;
+  projectTypes: Array<string> = [];
+  projectSizes: Array<string> = [];
+
+  patternForm = new FormGroup({
+    type: new FormControl(''),
+    size: new FormControl(''),
+    yarnWeight: new FormControl(YarnWeightEnum) //0: Lace, 1: SuperFine, 2: Fine, 3: Light, 4: Medium, 5: Bulky, 6: Super Bulky
+  });  
 
   constructor() {
-    this.slideIndex = 1;
+    this.slideIndex = 1;    
   }
 
   ngOnInit() {
     this.showSlides(this.slideIndex);
+    //get types and sizes
+    this.projectTypes = this.getTypes();
+    //this.projectSizes = this.getSizes(); //get dynamically based on what type is selected... i.e., dimensional sizing for afghan, but wearable size for sweater
   }
 
+  getTypes() {
+    //mock a service call to a database??
+    return ['Hat', 'Scarf', 'Mittens', 'Sweater', 'Afghan', 'Hot Pad', 'Rug', 'Slippers']
+  }
+
+  //slider control - do not modify at this time.
   showSlides(index: number) {
     let i;
     

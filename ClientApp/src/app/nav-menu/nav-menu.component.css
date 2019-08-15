@@ -16,3 +16,16 @@ html {
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
 }
+
+.nav-theme {  
+  background: linear-gradient(90deg, rgba(217,155,205,1) 0%, rgba(110,9,121,1) 35%, rgba(0,241,255,1) 100%);
+}
+
+.nav-text {
+  color: white !important;
+  font-weight: bold;
+}
+
+.brand-text {
+  color: white;
+}
