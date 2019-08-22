@@ -12,7 +12,6 @@ export class CrochetAppComponent implements OnInit {
   slideIndex: number;
   projectTypes = [];
   projectSizes = [];
-  selectedProject: string;
   form: FormGroup;
   subscription: Subscription;
 
@@ -49,14 +48,14 @@ export class CrochetAppComponent implements OnInit {
   getTypes() {
     //mock a service call to a database??
     return [
-      { name: 'Hat' },
-      { name: 'Scarf' },
-      { name: 'Mittens' },
-      { name: 'Sweater' },
-      { name: 'Afghan' },
-      { name: 'Hot Pad' },
-      { name: 'Rug' },
-      { name: 'Slippers' }
+      { name: 'Hat', sizes: [{ name: 'infant' }, { name: 'child' }, { name: 'youth' }, { name: 'adult' }] },
+      { name: 'Scarf', sizes: [{ name: 'child' }, { name: 'youth' }, { name: 'adult' }] },
+      { name: 'Mittens', sizes: [{ name: 'child' }, { name: 'youth' }, { name: 'adult' }] },
+      { name: 'Sweater', sizes: [{ name: 'x-small' }, { name: 'small' }, { name: 'medium' }, { name: 'large' }, { name: 'x-large' }] },
+      { name: 'Afghan', sizes: [{ name: '2ft x 4ft' }, { name: '3ft x 4ft' }, { name: '3ft x 5ft' }, { name: '4ft x 6ft' }] },
+      { name: 'Hot Pad', sizes: [{ name: '6in x 6in' }] },
+      { name: 'Rug', sizes: [{ name: '2ft x 4ft' }, { name: '3ft x 4ft' }, { name: '3ft x 5ft' }, { name: '4ft x 6ft' }] },
+      { name: 'Slippers', sizes: [{ name: 'x-small' }, { name: 'small' }, { name: 'medium' }, { name: 'large' }, { name: 'x-large' }] }
     ];
   }
 
