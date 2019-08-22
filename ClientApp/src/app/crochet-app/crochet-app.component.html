@@ -26,13 +26,14 @@
   </div>
   <div>
     <label>Select Crochet Type</label>
-    <select>
-      <!--<option *ngFor="let type of projectTypes">{{type}}</option>-->
+    <select name="selectedType">
+      <option></option>
+      <option *ngFor="let type of projectTypes" [value]="type.name" >{{type.name}}</option>
     </select>
   </div>
   <div>
     <label>Select a Size</label>
-    <select [formControl]="size">
+    <select >
       <option>Baby</option>
       <option>Extra Small</option>
       <option>Small</option>

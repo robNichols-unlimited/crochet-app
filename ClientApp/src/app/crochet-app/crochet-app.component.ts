@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { CrochetCriteria, YarnWeightEnum } from '../model/crochet-criteria';
 
 @Component({
@@ -9,18 +10,33 @@ import { CrochetCriteria, YarnWeightEnum } from '../model/crochet-criteria';
 })
 export class CrochetAppComponent implements OnInit {
   slideIndex: number;
-  criteria: CrochetCriteria;
-  projectTypes: Array<string> = [];
-  projectSizes: Array<string> = [];
+  projectTypes = [];
+  projectSizes = [];
+  selectedProject: string;
+  form: FormGroup;
+  subscription: Subscription;
 
-  patternForm = new FormGroup({
-    type: new FormControl(''),
-    size: new FormControl(''),
-    yarnWeight: new FormControl(YarnWeightEnum) //0: Lace, 1: SuperFine, 2: Fine, 3: Light, 4: Medium, 5: Bulky, 6: Super Bulky
-  });  
+  constructor(private formBuilder: FormBuilder) {
+    this.slideIndex = 1;
 
-  constructor() {
-    this.slideIndex = 1;    
+    this.form = this.formBuilder.group({
+      projectType: [null],
+      projectSize: [null],
+      yarnWeight: [null]
+    });
+
+    this.subscription = this.form.get('projectType').valueChanges.subscribe(x => {
+      const selectedType = this.projectTypes.find(p => p.name === x);
+      if (this.form.get('projectType').dirty) {
+        this.form.get('projectSize').setValue(null);
+        this.form.get('yarnWeight').setValue(null);
+      }
+      if (selectedType) {
+        this.projectSizes = selectedType.sizes;
+      } else {
+        this.projectSizes = [];
+      }
+    });
   }
 
   ngOnInit() {
@@ -32,7 +48,16 @@ export class CrochetAppComponent implements OnInit {
 
   getTypes() {
     //mock a service call to a database??
-    return ['Hat', 'Scarf', 'Mittens', 'Sweater', 'Afghan', 'Hot Pad', 'Rug', 'Slippers']
+    return [
+      { name: 'Hat' },
+      { name: 'Scarf' },
+      { name: 'Mittens' },
+      { name: 'Sweater' },
+      { name: 'Afghan' },
+      { name: 'Hot Pad' },
+      { name: 'Rug' },
+      { name: 'Slippers' }
+    ];
   }
 
   //slider control - do not modify at this time.
