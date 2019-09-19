@@ -2,7 +2,7 @@
   <div class="slideshow-container">
     <div class="mySlides">      
       <div class="crochet1">
-        <div class="text">Step 1: Select the type & size</div>
+        <div class="text">Step 1: Select the project & size</div>
       </div>      
     </div>
     <div class="mySlides">      
@@ -19,22 +19,22 @@
     <a class="next" (click)="plusSlides(1)">&#10095;</a>
   </div>
   <br/>
-  <div style="text-align: center">
+  <!--<div style="text-align: center">
     <span class="dot" (click)="currentSlide(1)"></span> 
     <span class="dot" (click)="currentSlide(2)"></span> 
     <span class="dot" (click)="currentSlide(3)"></span>
-  </div>
-  <div [formGroup]="form">
+  </div>-->
+  <div [formGroup]="form" class="project-form">
     <div>
-      <label>Select Crochet Type</label>
-      <select formControlName="projectType">
+      <label class="form-label">Select a Project: &nbsp;</label>
+      <select formControlName="projectType" class="form-drop-down">
         <option></option>
         <option *ngFor="let type of projectTypes" [value]="type.name" >{{type.name}}</option>
       </select>
     </div>
     <div>
-      <label>Select a Size</label>
-      <select name="selectedSize">
+      <label class="form-label">Select a Size: &nbsp;</label>
+      <select name="selectedSize" class="form-drop-down">
         <option></option>
         <option *ngFor="let size of projectSizes" [value]="size.name" >{{size.name}}</option>
       </select>

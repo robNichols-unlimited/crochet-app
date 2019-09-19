@@ -64,7 +64,7 @@ export class CrochetAppComponent implements OnInit {
     let i;
     
     let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
+    //let dots = document.getElementsByClassName("dot");
 
     if (index > slides.length) {
       this.slideIndex = 1;
@@ -77,11 +77,11 @@ export class CrochetAppComponent implements OnInit {
     for (i = 0; i < slides.length; i++) {
       slides[i].className = slides[i].className.replace(" slide-show", "");
     }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
+    //for (i = 0; i < dots.length; i++) {
+    //  dots[i].className = dots[i].className.replace(" active", "");
+    //}
     slides[this.slideIndex - 1].className += " slide-show";
-    dots[this.slideIndex - 1].className += " active";
+    //dots[this.slideIndex - 1].className += " active";
   }
 
   plusSlides(num: number) {
