@@ -9,11 +9,12 @@ import { CrochetCriteria, YarnWeightEnum } from '../model/crochet-criteria';
   styleUrls: ['./crochet-app.component.css']
 })
 export class CrochetAppComponent implements OnInit {
-  slideIndex: number;
-  projectTypes = [];
-  projectSizes = [];
-  form: FormGroup;
-  subscription: Subscription;
+    slideIndex: number;
+    projectTypes = [];
+    projectSizes = [];
+    projectWeights = [];
+    form: FormGroup;
+    subscription: Subscription;
 
   constructor(private formBuilder: FormBuilder) {
     this.slideIndex = 1;
@@ -31,7 +32,8 @@ export class CrochetAppComponent implements OnInit {
         this.form.get('yarnWeight').setValue(null);
       }
       if (selectedType) {
-        this.projectSizes = selectedType.sizes;
+          this.projectSizes = selectedType.sizes;
+          this.projectWeights = selectedType.yarnWeight;
       } else {
         this.projectSizes = [];
       }
@@ -48,14 +50,49 @@ export class CrochetAppComponent implements OnInit {
   getTypes() {
     //mock a service call to a database??
     return [
-      { name: 'Hat', sizes: [{ name: 'infant' }, { name: 'child' }, { name: 'youth' }, { name: 'adult' }] },
-      { name: 'Scarf', sizes: [{ name: 'child' }, { name: 'youth' }, { name: 'adult' }] },
-      { name: 'Mittens', sizes: [{ name: 'child' }, { name: 'youth' }, { name: 'adult' }] },
-      { name: 'Sweater', sizes: [{ name: 'x-small' }, { name: 'small' }, { name: 'medium' }, { name: 'large' }, { name: 'x-large' }] },
-      { name: 'Afghan', sizes: [{ name: '2ft x 4ft' }, { name: '3ft x 4ft' }, { name: '3ft x 5ft' }, { name: '4ft x 6ft' }] },
-      { name: 'Hot Pad', sizes: [{ name: '6in x 6in' }] },
-      { name: 'Rug', sizes: [{ name: '2ft x 4ft' }, { name: '3ft x 4ft' }, { name: '3ft x 5ft' }, { name: '4ft x 6ft' }] },
-      { name: 'Slippers', sizes: [{ name: 'x-small' }, { name: 'small' }, { name: 'medium' }, { name: 'large' }, { name: 'x-large' }] }
+      {
+        name: 'Hat',
+        sizes: [{ name: 'infant' }, { name: 'child' }, { name: 'youth' }, { name: 'adult' }],
+        yarnWeight: [{ name: 'Lace' }, { name: 'Super Fine' }, { name: 'Fine' }, { name: 'Light' },
+          { name: 'Medium' }, { name: 'Bulky' }, {name: 'Super Bulky' }]
+      },
+      {
+        name: 'Scarf',
+        sizes: [{ name: 'child' }, { name: 'youth' }, { name: 'adult' }],
+        yarnWeight: [{ name: 'Lace' }, { name: 'Super Fine' }, { name: 'Fine' }, { name: 'Light' },
+          { name: 'Medium' }, { name: 'Bulky' }, { name: 'Super Bulky' }]
+      },
+      {
+        name: 'Mittens',
+        sizes: [{ name: 'child' }, { name: 'youth' }, { name: 'adult' }],
+        yarnWeight: [{ name: 'Light' }, { name: 'Medium' }, { name: 'Bulky' }, { name: 'Super Bulky' }]
+      },
+      {
+        name: 'Sweater',
+        sizes: [{ name: 'x-small' }, { name: 'small' }, { name: 'medium' }, { name: 'large' }, { name: 'x-large' }],
+        yarnWeight: [{ name: 'Lace' }, { name: 'Super Fine' }, { name: 'Fine' }, { name: 'Light' },
+          { name: 'Medium' }, { name: 'Bulky' }, { name: 'Super Bulky' }]
+      },
+      {
+        name: 'Afghan',
+        sizes: [{ name: '2ft x 4ft' }, { name: '3ft x 4ft' }, { name: '3ft x 5ft' }, { name: '4ft x 6ft' }],
+        yarnWeight: [{ name: 'Fine' }, { name: 'Light' }, { name: 'Medium' }, { name: 'Bulky' }, { name: 'Super Bulky' }]
+      },
+      {
+        name: 'Hot Pad',
+        sizes: [{ name: '6in x 6in' }],
+        yarnWeight: [{ name: 'Light' }, { name: 'Medium' }, { name: 'Bulky' }, { name: 'Super Bulky' }]
+      },
+      {
+        name: 'Rug',
+        sizes: [{ name: '2ft x 4ft' }, { name: '3ft x 4ft' }, { name: '3ft x 5ft' }, { name: '4ft x 6ft' }],
+        yarnWeight: [{ name: 'Medium' }, { name: 'Bulky' }, { name: 'Super Bulky' }]
+      },
+      {
+        name: 'Slippers',
+        sizes: [{ name: 'x-small' }, { name: 'small' }, { name: 'medium' }, { name: 'large' }, { name: 'x-large' }],
+        yarnWeight: [{ name: 'Light' }, { name: 'Medium' }, { name: 'Bulky' }, { name: 'Super Bulky' }]
+      }
     ];
   }
 
@@ -64,7 +101,7 @@ export class CrochetAppComponent implements OnInit {
     let i;
     
     let slides = document.getElementsByClassName("mySlides");
-    let dots = document.getElementsByClassName("dot");
+    //let dots = document.getElementsByClassName("dot");
 
     if (index > slides.length) {
       this.slideIndex = 1;
@@ -77,11 +114,11 @@ export class CrochetAppComponent implements OnInit {
     for (i = 0; i < slides.length; i++) {
       slides[i].className = slides[i].className.replace(" slide-show", "");
     }
-    for (i = 0; i < dots.length; i++) {
-      dots[i].className = dots[i].className.replace(" active", "");
-    }
+    //for (i = 0; i < dots.length; i++) {
+    //  dots[i].className = dots[i].className.replace(" active", "");
+    //}
     slides[this.slideIndex - 1].className += " slide-show";
-    dots[this.slideIndex - 1].className += " active";
+    //dots[this.slideIndex - 1].className += " active";
   }
 
   plusSlides(num: number) {

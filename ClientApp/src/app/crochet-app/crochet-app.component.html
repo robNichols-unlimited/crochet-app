@@ -19,24 +19,31 @@
     <a class="next" (click)="plusSlides(1)">&#10095;</a>
   </div>
   <br/>
-  <div style="text-align: center">
+  <!--<div style="text-align: center">
     <span class="dot" (click)="currentSlide(1)"></span> 
     <span class="dot" (click)="currentSlide(2)"></span> 
     <span class="dot" (click)="currentSlide(3)"></span>
-  </div>
+  </div>-->
   <div [formGroup]="form">
     <div>
-      <label>Select Crochet Type</label>
+      <label>Select a Project: </label>
       <select formControlName="projectType">
         <option></option>
         <option *ngFor="let type of projectTypes" [value]="type.name" >{{type.name}}</option>
       </select>
     </div>
     <div>
-      <label>Select a Size</label>
-      <select name="selectedSize">
+      <label>Select a Size: </label>
+      <select formControlName="projectSize">
         <option></option>
         <option *ngFor="let size of projectSizes" [value]="size.name" >{{size.name}}</option>
+      </select>
+    </div>
+    <div *ngIf="projectSizes !== []">
+      <label>Select a yarn weight: </label>
+      <select formControlName="yarnWeight">
+        <option></option>
+        <option *ngFor="let weight of projectWeights" [value]="weight.name">{{weight.name}}</option>
       </select>
     </div>
   </div>

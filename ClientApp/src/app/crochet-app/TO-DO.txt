@@ -1,0 +1,31 @@
+Rework routing to make CrochetApp the home page
+Rework Labels and drop down imputs to be
+  a) fixed size
+  b) font and format better - more friendly/less businesslike
+Rework imaging to advance after the Project and Size are selected to the select yarn weight image
+Rework imaging to advance after the project, size and weight are selected to the generate button image
+Create "Generate" button
+Enable generate button once the values are selected
+
+Upon pressing the generate button, get follow along instructions to display on a non-visible route.
+
+Future Features----------------
+On project selection page:
+  Add a open project button
+    - this would check for any bookmarked projects and return the user to the place in the follow-along that was last bookmarked
+    -bookmarks are to be nameable, (i.e. sweater_project-medium) for easy finding.
+    -bookmarks should be allowed to be deleted after opening the project.
+
+On the project instruction page:
+  Add a button for adding a bookmark
+    -only enable if the project does not already have a bookmark
+  Add a button for saving project progress
+    -only enable if teh project does have a bookmark
+    -this moves the bookmark to the new place in the instructions
+  Add a modifiable counter
+    -many instructions likely will state to repeat x number of rows?
+    -this will allow the user to put the row count they were on when they choose to save so they know where they are when they come back.
+
+Considerations----------------
+Do we make the instructions downloadable as a pdf?
+Do we make instructable videos - with links to the videos from the instruction screen (i.e. This is how to do this stitch. This is how to connect one weight to another. etc)
