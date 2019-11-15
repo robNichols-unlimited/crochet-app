@@ -2,7 +2,7 @@
   <div class="slideshow-container">
     <div class="mySlides">      
       <div class="crochet1">
-        <div class="text">Step 1: Select the type & size</div>
+        <div class="text">Step 1: Select the project & size</div>
       </div>      
     </div>
     <div class="mySlides">      
@@ -24,26 +24,19 @@
     <span class="dot" (click)="currentSlide(2)"></span> 
     <span class="dot" (click)="currentSlide(3)"></span>
   </div>-->
-  <div [formGroup]="form">
+  <div [formGroup]="form" class="project-form">
     <div>
-      <label>Select a Project: </label>
-      <select formControlName="projectType">
+      <label class="form-label">Select a Project: &nbsp;</label>
+      <select formControlName="projectType" class="form-drop-down">
         <option></option>
         <option *ngFor="let type of projectTypes" [value]="type.name" >{{type.name}}</option>
       </select>
     </div>
     <div>
-      <label>Select a Size: </label>
-      <select formControlName="projectSize">
+      <label class="form-label">Select a Size: &nbsp;</label>
+      <select name="selectedSize" class="form-drop-down">
         <option></option>
         <option *ngFor="let size of projectSizes" [value]="size.name" >{{size.name}}</option>
-      </select>
-    </div>
-    <div *ngIf="projectSizes !== []">
-      <label>Select a yarn weight: </label>
-      <select formControlName="yarnWeight">
-        <option></option>
-        <option *ngFor="let weight of projectWeights" [value]="weight.name">{{weight.name}}</option>
       </select>
     </div>
   </div>
